@@ -1,0 +1,35 @@
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.movieDetail{    
+    width: 205px;
+    margin: 0 0 15px 20px;
+    padding: 5px;    
+    font-size: 15px;
+    text-align: left;
+}
+
+.moviePlot{    
+    width: 350px;
+    margin: 0 0 15px 20px;
+    padding: 15px;    
+    font-size: 15px;    
+}
+
+.idColumn{
+    width: 20px;    
+    padding: 15px;    
+    font-size: 15px;        
+}
