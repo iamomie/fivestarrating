@@ -10,6 +10,8 @@ class MoviePage extends Component{
             movies : MovieRatingStore.getAllMovies()
         };        
     }
+    
+   
    
     render(){     
         return(

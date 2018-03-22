@@ -6,26 +6,34 @@ import movieRatingStore from './../../stores/MovieRatingStore.js'
 
 class Ratings extends Component {
     constructor(props, context) {
-        super(props, context);
-
+        super(props, context);        
+        this._onChange = this._onChange.bind(this);        
         this.state = {
             rating : movieRatingStore.getMovieRating({title:this.props.movie})
         };
-
-        this.changeRating = this.changeRating.bind(this)
+        
+        this.changeRating = this.changeRating.bind(this);                
     };
-
-    changeRating( newRating ) {
-        RatingActions.add({title: this.props.movie, rating:newRating});
-        this.setState({            
-            rating: movieRatingStore.getMovieRating({title:this.props.movie})
-
-        });      
-
+         
+    componentDidMount = () => {
+        movieRatingStore.addChangeListener(this._onChange.bind(this));
+    }
+   
+    componentWillUnMount = () => {
+        movieRatingStore.removeChangeListener(this._onChange.bind(this));
+    }
+    
+    _onChange(){
+        this.setState({
+            rating: movieRatingStore.getMovieRating({title:this.props.movie})                        
+        });             
     }
 
-    render() {
-        // rating = 2;
+    changeRating( newRating ) {    
+        RatingActions.add({title: this.props.movie, rating:newRating});         
+    }
+
+    render() {           
         return (
             <StarRatings
                 rating={this.state.rating}
